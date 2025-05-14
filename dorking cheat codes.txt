@@ -1,0 +1,48 @@
+| site: www.honda.com | filetype:pdf | mangoes @facebook | “search png 2” | “Related:wordpresswebsites.com” | .| intitle:"Weather Wing WS-2" | "Index of" inurl:phpmyadmin | intitle:"Index of" wp-admin
+ | "index of" "database.sql.zip" | inurl:zoom.us/j and intext:scheduled for | intitle:”index of” inurl:ftp | Intitle:”webcamXP 5” | inurl:email.xlsx ext:xlsx |inurl:/proc/self/cwd | intext:password ext:log | intitle:"webcamXP 5" | inurl:"lvappl.htm"intext: | "crypto" 1..1337 | How to * a computer after:2023-01-01 | allintext:homework teacher school site:gov before:2023ext:(html | php) 
+
+Social media operators 
+
+  @google:username | #HelloDelhi | map:Delhi
+
+
+inurl:wp-content intitle:"business" OR intitle:"shop" OR intitle:"marketing" OR intitle:"lifestyle" site:.uk
+
+
+inurl:"wp-content/plugins/woocommerce" intitle:"shop" OR intitle:"store" site:.uk
+
+inurl:wp-content intitle:"business" OR intitle:"marketing" OR intitle:"shop" OR intitle:"store" intext:"selling" site:.uk
+
+inurl:wp-content intitle:"business" OR intitle:"marketing" OR intitle:"shop" OR intitle:"store" intext:"selling" site:.uk
+
+intitle:"Powered by WordPress" inurl:wp-content site:.uk
+
+inurl:wp-login.php intitle:"business" OR intitle:"marketing" site:.uk
+
+ main domain use dork:
+https://web.archive.org/web/*/example.com/*
+
+or use this : 
+https://web.archive.org/cdx/search/cdx?url=*.example.com/*&collapse=urlkey&output=text&fl=original
+
+
+for subdomain :
+https://web.archive.org/cdx/search/cdx?url=*.bugbountyhunter.xyz/*&output=text&fl=original&collapse=urlkey&filter=statuscode:200
+
+or can be download in text file using curl :
+
+curl -G “https://web.archive.org/cdx/search/cdx" — data-urlencode “url=*.example.com/*” — data-urlencode “collapse=urlkey” — data-urlencode “output=text” — data-urlencode “fl=original” > output.txt
+
+and after that we can grep sensitive info from output .txt 
+
+cat out.txt | uro | grep -E '\.xls|\.xml|\.xlsx|\.json|\.pdf|\.sql|\.doc|\.docx|\.pptx|\.txt|\.zip|\.tar\.gz|\.tgz|\.bak|\.7z|\.rar|\.log|\.cache|\.secret|\.db|\.backup|\.yml|\.gz|\.config|\.csv|\.yaml|\.md|\.md5|\.exe|\.dll|\.bin|\.ini|\.bat|\.sh|\.tar|\.deb|\.git|\.env|\.rpm|\.iso|\.img|\.apk|\.msi|\.dmg|\.tmp|\.crt|\.pem|\.key|\.pub|\.asc'
+
+
+or can grep specific ext using this
+https://web.archive.org/cdx/search/cdx?url=*.example.com/*&collapse=urlkey&output=text&fl=original&filter=original:.*\.(xls|xml|xlsx|json|pdf|sql|doc|docx|pptx|txt|zip|tar\.gz|tgz|bak|7z|rar|log|cache|secret|db|backup|yml|gz|git|config|csv|yaml|md|md5|exe|dll|bin|ini|bat|sh|tar|deb|rpm|iso|img|apk|msi|env|dmg|tmp|crt|pem|key|pub|asc)$
+
+
+find hidden info in pdf files
+cat output.txt | grep -Ea '\.pdf' | while read -r url; do curl -s "$url" | pdftotext - - | grep -Eaiq '(internal use only|confidential|strictly private|personal & confidential|private|restricted|internal|not for distribution|do not share|proprietary|trade secret|classified|sensitive|bank statement|invoice|salary|contract|agreement|non disclosure|passport|social security|ssn|date of birth|	|identity|id number|company confidential|staff only|management only|internal only)' && echo "$url"; done
+
+  
